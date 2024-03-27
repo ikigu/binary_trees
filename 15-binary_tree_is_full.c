@@ -1,4 +1,5 @@
 #include "binary_trees.h"
+#include <stdbool.h>
 
 /**
  * binary_tree_is_leaf - checks if a node is a leaf
@@ -29,14 +30,14 @@ int binary_tree_is_leaf(const binary_tree_t *node)
 int binary_tree_is_full(const binary_tree_t *tree)
 {
 	if (!tree)
-		return FALSE;
+		return (true);
 
-	binary_tree_is_full(tree->right);
-	binary_tree_is_full(tree->left);
+    if ((tree->left == NULL && tree->right != NULL) ||
+		(tree->left != NULL && tree->right == NULL))
+    {
+		return false;
+	}
 
-	if (tree->parent && ((tree->right && tree->left) ||
-		(!(tree->right) && !(tree->left))))
-		return (TRUE);
-	else
-		return (FALSE);
+	return (binary_tree_is_full(tree->left) &&
+		binary_tree_is_full(tree->right));
 }
