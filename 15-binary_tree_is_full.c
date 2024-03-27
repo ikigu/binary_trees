@@ -2,25 +2,6 @@
 #include <stdbool.h>
 
 /**
- * binary_tree_is_leaf - checks if a node is a leaf
- * @node: pointer to the node to check
- *
- * Return: 1 (TRUE) if is leaf, 0 (FALSE) if not leaf.
- * 0 (FALSE) if node is NULL
-*/
-
-int binary_tree_is_leaf(const binary_tree_t *node)
-{
-	if (!node)
-		return (FALSE);
-
-	if (node->left || node->right)
-		return (FALSE);
-	else
-		return (TRUE);
-}
-
-/**
  * binary_tree_is_full - checks if a binary tree is full
  * @tree: pointer to the root node of the tree to check
  *
@@ -32,10 +13,10 @@ int binary_tree_is_full(const binary_tree_t *tree)
 	if (!tree)
 		return (true);
 
-    if ((tree->left == NULL && tree->right != NULL) ||
+	if ((tree->left == NULL && tree->right != NULL) ||
 		(tree->left != NULL && tree->right == NULL))
-    {
-		return false;
+	{
+		return (false);
 	}
 
 	return (binary_tree_is_full(tree->left) &&
